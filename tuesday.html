@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+    <title>Tuesday</title>
+  </head>
+  <body>
+    <p>weekDay.name(weekDay.number("Saturday"))</p>
+    <h2 id="outputAreaWeekDay"></h2>
+    <p>month.name(month.number("November"))</p>
+    <h2 id="outputAreaMonth"></h2>
+    <script type="text/javascript">
+      (function(exports) {
+      var names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+      exports.name = function(number) {
+      return names[number];
+      };
+      exports.number = function(name) {
+      return names.indexOf(name);
+      };
+      })(this.weekDay = {});
+
+      $("#outputAreaWeekDay").text(weekDay.name(weekDay.number("Saturday")));
+
+      (function(exports) {
+      var names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      exports.name = function(number) {
+      return names[number];
+      };
+      exports.number = function(name) {
+      return names.indexOf(name);
+      };
+    })(this.month = {});
+
+      $("#outputAreaMonth").text(month.name(month.number("November")));
+    </script>
+  </body>
+</html>
