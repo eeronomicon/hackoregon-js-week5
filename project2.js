@@ -12,7 +12,7 @@
   };
 
   exports.monthName = function(number) {
-    var names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return names[number - 1];
   };
 
@@ -31,8 +31,8 @@
   };
 
   exports.fizzBuzz = function(number) {
-    var returnString = "";
-    for (var i = 1; i <= number; i++) {
+    let returnString = "";
+    for (let i = 1; i <= number; i++) {
       if (i % 15 === 0) {
         returnString += "fizzbuzz | ";
       } else if (i % 5 === 0) {
@@ -52,7 +52,7 @@
     } else if (inputNumber === 2 ) {
       return true;
     } else {
-      for (var i = 2; i <= Math.sqrt(inputNumber)/2; i++) {
+      for (let i = 2; i <= Math.sqrt(inputNumber)/2; i++) {
         if (inputNumber % i === 0) {
           return false;
         } else {
@@ -62,8 +62,25 @@
     }
   };
 
+  exports.library = [
+    {
+      author: 'Bill Gates',
+      title: 'The Road Ahead',
+      readingStatus: true
+    },
+    {
+      author: 'Walter Isaacson',
+      title: 'Steve Jobs',
+      readingStatus: true
+    },
+    {
+      author: 'Suzanne Collins',
+      title:  'Mockingjay: The Final Book of The Hunger Games',
+      readingStatus: false
+  }];
+
   exports.readingList = function(library) {
-    var outputString = "";
+    let outputString = "";
     library.forEach(function(book) {
       outputString += (book.readingStatus ? "I am currently reading " : "I have yet to read ");
       outputString += book.title + " by " + book.author + '\n';
@@ -71,7 +88,7 @@
     return outputString;
   };
 
-  exports.Vehicle = function(type, line, lat, long, speed, full, vehicleNumber, late) {
+  let Vehicle = function(type, line, lat, long, speed, full, vehicleNumber, late) {
     this.type = type;
     this.line = line;
     this.lat = lat;
@@ -82,18 +99,20 @@
     this.late = parseInt(late);
   };
 
-  exports.Vehicle.prototype.displayInfo = function() {
-    var returnArray = [];
+  Vehicle.prototype.displayInfo = function() {
+    let returnArray = [];
     returnArray.push(this.type);
     returnArray.push(this.line);
     returnArray.push([this.lat, this.long]);
     return returnArray;
   };
 
-  exports.Vehicle.prototype.updateLatLong = function(newLat, newLong) {
+  Vehicle.prototype.updateLatLong = function(newLat, newLong) {
     this.lat = newLat;
     this.long = newLong;
   };
+
+  exports.Vehicle = Vehicle;
 
   exports.Vector = function(x, y) {
     this.x = x;
@@ -114,22 +133,6 @@
 
 })(typeof window === "undefined" || window === null ? global.classToolBox = {} : window.classToolBox = {});
 
-var library = [
-  {
-    author: 'Bill Gates',
-    title: 'The Road Ahead',
-    readingStatus: true
-  },
-  {
-    author: 'Walter Isaacson',
-    title: 'Steve Jobs',
-    readingStatus: true
-  },
-  {
-    author: 'Suzanne Collins',
-    title:  'Mockingjay: The Final Book of The Hunger Games',
-    readingStatus: false
-}];
 
 console.log(classToolBox.projectName);
 console.log(classToolBox.createdFor);
@@ -140,9 +143,9 @@ console.log(classToolBox.monthName(10));
 console.log("A score of 95 gets a grade of " + classToolBox.assignGrade(95));
 console.log(classToolBox.fizzBuzz(45));
 console.log("Is 201 a Prime Number? " + classToolBox.isPrime(201));
-console.log(classToolBox.readingList(library));
+console.log(classToolBox.readingList(classToolBox.library));
 
-var busLine12 = new classToolBox.Vehicle("Bus", "12", -122.2, 45.52, 30, false, 1520, 2);
+let busLine12 = new classToolBox.Vehicle("Bus", "12", -122.2, 45.52, 30, false, 1520, 2);
 console.log(busLine12.displayInfo(busLine12.updateLatLong(-122.4, 45.56)));
 console.log(new classToolBox.Vector(1, 2).minus(new classToolBox.Vector(2, 3)));
 console.log(new classToolBox.Vector(1, 2).plus(new classToolBox.Vector(2, 3)));
